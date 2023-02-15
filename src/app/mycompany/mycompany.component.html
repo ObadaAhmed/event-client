@@ -1,0 +1,41 @@
+<app-navbar></app-navbar>
+<button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#createCompany">Create Company</button>
+<div class="container" style="display: flex; align-content: center; margin-bottom: 10%">
+  <div class="card" style="width: 18rem;display: inline-block;" *ngFor="let company of companies">
+    <img src="https://via.placeholder.com/50" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{company.companyName}}</h5>
+      <p class="card-text">{{company.description}}</p>
+      <a (click)="navigateToDetails(company.companyId)" class="btn btn-primary">Details</a>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="createCompany" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Company</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Name</label>
+            <input type="text" name="name" [(ngModel)]="name" class="form-control border border-primary"  aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input type="email" name="email" [(ngModel)]="email"  class="form-control border border-primary" id="exampleInputEmail1" aria-describedby="emailHelp">
+          </div>
+          <div class="d-grid">
+            <button class="btn btn-primary" (click)="submit()" type="submit">Create company</button>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

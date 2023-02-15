@@ -1,0 +1,123 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <div class="row profile">
+    <div class="col-md-3">
+      <div class="profile-sidebar">
+        <!-- SIDEBAR USERPIC -->
+        <!-- END SIDEBAR USERPIC -->
+        <!-- SIDEBAR USER TITLE -->
+        <div class="profile-usertitle">
+          <div class="profile-usertitle-name">
+            Owner
+          </div>
+          <div class="profile-usertitle-job">
+            {{ownerName}}
+          </div>
+        </div>
+        <!-- END SIDEBAR USER TITLE -->
+        <!-- SIDEBAR BUTTONS -->
+        <div class="profile-userbuttons">
+          <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addEvent">add event</button>
+          <button type="button" class="btn btn-primary btn-sm">event bookings</button>
+          <button type="button" (click)="navigateToEvent()" class="btn btn-primary btn-sm">company events</button>
+          <button type="button" (click)="updateCompanyProfile()" data-bs-toggle="modal" data-bs-target="#updateCreateProfile" class="btn btn-secondary btn-sm">complete profile</button>
+        </div>
+        <!-- END SIDEBAR BUTTONS -->
+
+      </div>
+    </div>
+    <div class="col-md-9">
+      <div class="profile-content">
+        <br>
+        <h4>Company Basic Details : </h4>
+        <br>
+        <div class="card" style="width: 18rem;">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Company Name : {{company.companyName}}</li>
+          </ul>
+        </div>
+        <br>
+        <h4>Company Profile : </h4>
+        <br>
+        <div class="card" style="width: 18rem;">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Description : {{company.description !== null ? company.description : ''}}</li>
+            <li class="list-group-item">Location : {{company.location !== null ? company.location : ''}}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="updateCreateProfile" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Profile</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Description</label>
+            <input type="text" name="name" [(ngModel)]="description" class="form-control border border-primary"  aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">location</label>
+            <input type="text" name="email" [(ngModel)]="location"  class="form-control border border-primary" id="exampleInputEmail1" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">logo</label>
+            <input type="text" name="email" [(ngModel)]="logo"  class="form-control border border-primary" id="exampleInputEmail1" aria-describedby="emailHelp">
+          </div>
+          <div class="d-grid">
+            <button class="btn btn-primary" *ngIf="!updateProfile" (click)="saveProfile()" type="submit">Create Profile</button>
+            <button class="btn btn-primary" *ngIf="updateProfile" (click)="updateComProfile()" type="submit">update Profile</button>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="addEvent" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" >Event</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Description</label>
+            <input type="text" name="name" [(ngModel)]="name" class="form-control border border-primary"  aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">location</label>
+            <input type="text" name="email" [(ngModel)]="EventDescription"  class="form-control border border-primary" id="exampleInputEmail1" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">start Date</label>
+            <input type="date" name="email" [(ngModel)]="startDate"  class="form-control border border-primary" id="exampleInputEmail1" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">end Date</label>
+            <input type="date" name="email" [(ngModel)]="endDate"  class="form-control border border-primary" id="exampleInputEmail1" aria-describedby="emailHelp">
+          </div>
+          <div class="d-grid">
+            <button class="btn btn-primary"  (click)="saveEvent()" type="submit">Create Profile</button>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+

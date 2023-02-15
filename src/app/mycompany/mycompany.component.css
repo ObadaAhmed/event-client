@@ -1,0 +1,10 @@
+.btn {
+  margin: 4%;
+}
+.container {
+  display: flex;
+  align-items: center;
+}
+.card {
+  margin: 1%;
+}

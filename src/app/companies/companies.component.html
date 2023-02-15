@@ -1,0 +1,18 @@
+<app-navbar></app-navbar>
+<div class="container col-6" *ngFor="let company of companies">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">{{company.companyName}}</h5>
+      <p class="card-text">{{company.description}}</p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item"> Location : {{company.location}}</li>
+      <li class="list-group-item">Owner name : {{company.companyOwner}}</li>
+      <li class="list-group-item">A third item</li>
+    </ul>
+    <div class="card-body">
+      <button type="button" (click)="follow(company.companyId)" class="btn btn-primary mr-2" style="margin-right: 3px">Follow</button>
+      <button type="button" (click)="navigateToCompaniesEvent(company.companyId)" class="btn btn-secondary ml-2">events</button>
+    </div>
+  </div>
+</div>
